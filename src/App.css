@@ -46,7 +46,7 @@ button:hover {
 button.remove {
   padding: 5px 10px;
   background-color: #dc3545;
-  margin-left: 10px;
+  margin-left: 8px; /* Ensure 8px spacing between the input and this button */
   cursor: pointer;
   border: 1px solid #ccc;
   color: black;
@@ -59,7 +59,7 @@ button.remove:hover {
 
 .input-container {
   display: flex;
-  align-items: center;
+  align-items: center; /* This will vertically center the children */
   justify-content: center;
   margin-bottom: 16px;
   width: 100%;

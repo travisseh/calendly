@@ -65,11 +65,11 @@ export default function App() {
             placeholder="Enter Calendly Link"
           />
           {index > 1 && (
-            <button onClick={() => removeLinkInput(index)} className="remove">-</button>
+            <button onClick={() => removeLinkInput(index)} className="remove" style={{alignSelf: 'center', marginLeft: '8px'}}>-</button>
           )}
         </div>
       ))}
-      <button onClick={addLinkInput} className="link-button">Add another link</button> {/* Add this line */}
+      <button onClick={addLinkInput} className="link-button" style={{background: 'none', color: 'blue', textDecoration: 'underline'}}>Add another link</button>
       <div className="button-container">
         <button onClick={fetchAvailableDays}>Find Shared Times</button>
       </div>
