@@ -32,7 +32,7 @@ export default function App() {
   const fetchAvailableDays = async () => {
     setIsLoading(true); // Start loading
     try {
-      const response = await fetch('http://localhost:3001/fetch-calendly', {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
