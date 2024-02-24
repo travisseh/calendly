@@ -1,38 +1,102 @@
-.App {
+/* Reset margin and padding for the body */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+main {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  display: block;
+  margin: 8px auto; /* This effectively creates 16px spacing between stacked inputs */
+  padding: 10px;
+  width: 80%; /* Adjust width as needed */
+  box-sizing: border-box;
+  border-radius: 5px; /* Basic rounding of inputs */
+  border: 1px solid #ccc; /* Light grey border */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styling for the remove button to make it smaller and less prominent */
+button.remove {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  margin-left: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  color: black;
+  background-color: transparent;
+}
+
+button.remove:hover {
+  background-color: #c82333;
+}
+
+.input-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.link-button {
+  background: none;
+  color: blue;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  text-align: left;
+  display: block; /* Makes the button full width, easier to align text to the left */
+  margin-top: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Adjust the container to align items to the start (left) */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns children (including buttons) to the left */
+  width: 80%; /* Adjust based on your layout */
+  margin: 0 auto; /* Centers the container */
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+section {
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
 }
