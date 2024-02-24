@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './App.css';
 
 export default function App() {
-  const [calendlyLinks, setCalendlyLinks] = useState(['', '']);
+  const [calendlyLinks, setCalendlyLinks] = useState([
+    "https://calendly.com/travisse-radiant/30min",
+    "https://calendly.com/travisse-hansen/30min"
+  ]);
   const [availableTimes, setAvailableTimes] = useState([]); // Updated state to hold available times
+  const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const handleLinkChange = (index, event) => {
     const newLinks = [...calendlyLinks];
@@ -26,15 +30,14 @@ export default function App() {
   };
 
   const fetchAvailableDays = async () => {
-    const calendlyUrl = "https://calendly.com/travisse-radiant/30min?month=2022-06";
-    
+    setIsLoading(true); // Start loading
     try {
       const response = await fetch('http://localhost:3001/fetch-calendly', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ calendlyUrl: calendlyUrl }),
+        body: JSON.stringify({ calendlyUrls: calendlyLinks }),
       });
       
       if (!response.ok) {
@@ -42,9 +45,11 @@ export default function App() {
       }
       
       const data = await response.json();
-      setAvailableTimes(data.availableTimes); // Update state with fetched available times
+      setAvailableTimes(data.availableTimes); // No change needed here, but ensure data structure is compatible
     } catch (error) {
       console.error('Error fetching available times:', error);
+    } finally {
+      setIsLoading(false); // Stop loading regardless of the outcome
     }
   };
 
@@ -64,17 +69,30 @@ export default function App() {
           )}
         </div>
       ))}
-      <button onClick={addLinkInput} className="link-button">Add More Links</button>
-      <button onClick={fetchAvailableDays}>Find Shared Times</button>
-      <hr /> {/* Divider */}
-      <section>
-        <h3>Shared Available Times</h3>
-        <ul>
-          {availableTimes.map((time, index) => (
-            <li key={index}>{time}</li>
-          ))}
-        </ul>
-      </section>
+      <button onClick={addLinkInput} className="link-button">Add another link</button> {/* Add this line */}
+      <div className="button-container">
+        <button onClick={fetchAvailableDays}>Find Shared Times</button>
+      </div>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && availableTimes.length > 0 && (
+        <>
+          <hr /> {/* Divider */}
+          <section>
+            <h3>Shared Available Times</h3>
+            {availableTimes.map(({ dayDate, times }, index) => (
+              <div key={index}>
+                <h4>{dayDate}</h4>
+                <ul>
+                  {times.map((time, timeIndex) => (
+                    <li key={timeIndex}>{time}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        </>
+      )}
     </main>
   );
 }
+

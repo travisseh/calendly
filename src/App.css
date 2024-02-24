@@ -1,17 +1,21 @@
 /* Reset margin and padding for the body */
-body {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+  height: 100%;
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 main {
   text-align: center;
+  padding: 20px;
+  overflow-y: auto; /* Ensure vertical scrolling is enabled if needed */
+  min-height: 100vh; /* Minimum height is the full viewport height */
+  margin: auto;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center children vertically */
 }
 
 input {
@@ -70,15 +74,22 @@ button.remove:hover {
   text-align: left;
   display: block; /* Makes the button full width, easier to align text to the left */
   margin-top: 16px;
+  text-decoration: underline; /* Optional: Makes it clear it's clickable */
+  margin: 10px 0; /* Adjust spacing as needed */
 }
 
 /* Adjust the container to align items to the start (left) */
 .main-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Aligns children (including buttons) to the left */
+  justify-content: flex-start; /* Adjust based on content size */
+  align-items: center; /* Center content horizontally */
+  min-height: 100vh; /* Ensure it takes up at least the viewport height */
+  overflow-y: auto; /* Enable scrolling within this container */
   width: 80%; /* Adjust based on your layout */
-  margin: 0 auto; /* Centers the container */
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 hr {
