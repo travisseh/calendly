@@ -33,6 +33,7 @@ export default function App() {
     try {
       const response = await fetch(`${url}/fetch-calendly`, {
         method: 'POST',
+        mode: 'cors', // Ensure this is set to 'cors'
         headers: {
           'Content-Type': 'application/json',
         },
