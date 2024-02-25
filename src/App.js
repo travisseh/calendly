@@ -29,10 +29,12 @@ export default function App() {
     alert('Submitted. Implement fetching and processing of Calendly links.');
   };
 
+  const url = process.env.REACT_APP_BACKEND_URL
+
   const fetchAvailableDays = async () => {
     setIsLoading(true); // Start loading
     try {
-      const response = await fetch(process.env.REACT_APP_BACKEND_URL, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
