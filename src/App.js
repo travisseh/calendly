@@ -28,7 +28,7 @@ export default function App() {
 
   // const url = process.env.REACT_APP_BACKEND_URL
 
-  const url = `https://calendly-combine-40f6d62fe7a0.herokuapp.com/`
+  const url = `https://calendly-combine-40f6d62fe7a0.herokuapp.com`
 
   const fetchAvailableDays = async () => {
     setIsLoading(true); // Start loading
