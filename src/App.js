@@ -24,11 +24,6 @@ export default function App() {
     setCalendlyLinks(newLinks);
   };
 
-  const handleSubmit = () => {
-    console.log('Submitted Calendly Links:', calendlyLinks);
-    alert('Submitted. Implement fetching and processing of Calendly links.');
-  };
-
   //console.log
 
   const url = process.env.REACT_APP_BACKEND_URL
