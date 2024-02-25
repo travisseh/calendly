@@ -29,6 +29,8 @@ export default function App() {
     alert('Submitted. Implement fetching and processing of Calendly links.');
   };
 
+  //console.log
+
   const url = process.env.REACT_APP_BACKEND_URL
 
   const fetchAvailableDays = async () => {
